@@ -3,6 +3,14 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/contact": "pages/contact.js",
-  "/features": "pages/features.js"
+  "/auth": "pages/auth.js",
+  "/dashboard": "pages/dashboard.js",
+  "/timer": "pages/timer.js",
+  "/account": "pages/account.js",
+  "/chat": "pages/chat.js",
+  "/summaries": "pages/summaries.js",
+  "/courses": "pages/courses.js",
+  "/flashcards": "pages/flashcards.js",
+  "/analytics": "pages/analytics.js",
+  "/tasks": "pages/tasks.js"
 }

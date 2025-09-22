@@ -85,13 +85,13 @@ export default function TasksManager() {
     <div className="p-4 bg-white rounded shadow">
       <form onSubmit={addTask} className="flex gap-2">
         <input value={title} onChange={e => setTitle(e.target.value)} placeholder="New task" className="flex-1 border p-2 rounded" />
-        <button className="px-4 py-2 bg-zinc-800 text-white rounded">Add</button>
+        <button className="btn-primary">Add</button>
       </form>
 
       <ul className="mt-4 space-y-2">
         {tasks.length === 0 && <li className="text-zinc-500">No tasks yet.</li>}
         {tasks.map(task => (
-          <li key={task.id} className="flex items-center justify-between border p-2 rounded">
+            <li key={task.id} className="flex items-center justify-between border p-2 rounded">
             <div>
               <label className="inline-flex items-center gap-2">
                 <input type="checkbox" checked={task.completed} onChange={() => toggle(task.id, task.completed)} />

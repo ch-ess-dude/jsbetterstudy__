@@ -21,7 +21,8 @@ body {
   @apply inline-flex items-center justify-center px-4 py-2 rounded;
 }
 .btn-primary {
-  @apply bg-zinc-800 text-white;
+  /* Primary: Indigo 600, hover Indigo 700 */
+  @apply bg-indigo-600 text-white shadow-md rounded-full px-6 py-3;
 }
 .btn-ghost {
   @apply border bg-white;
@@ -35,4 +36,17 @@ body {
   to { opacity: 1; transform: translateX(0); }
 }
 .animate-fadeInLeft { animation: fadeInLeft 600ms ease both }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 500ms ease both }
+
+/* Utility for pill CTA scaling on hover */
+.pill-cta { @apply rounded-full px-8 py-4 transition transform duration-200 }
+.pill-cta:hover { transform: scale(1.05) }
+
+/* Small text utilities */
+.muted { @apply text-zinc-500 }
 

@@ -122,7 +122,7 @@ export default function PomodoroManager() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto bg-gradient-to-b from-white to-gray-50 p-6 rounded-2xl shadow-lg">
+  <div className="max-w-3xl mx-auto bg-gradient-to-b from-white to-gray-50 p-6 rounded-2xl shadow-lg">
       <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <div className="flex-1">
           <input value={sessionName} onChange={e => setSessionName(e.target.value)} className="w-full p-3 rounded-lg border" />
@@ -138,11 +138,11 @@ export default function PomodoroManager() {
 
       <div className="flex flex-col md:flex-row items-center gap-6">
         <div className="flex-1 flex flex-col items-center">
-          <div className="w-56 h-56 rounded-full bg-gradient-to-tr from-white to-blue-50 flex items-center justify-center shadow-inner">
+          <div className="w-56 h-56 rounded-full bg-gradient-to-tr from-white to-indigo-50 flex items-center justify-center shadow-inner">
             <div className="text-5xl font-mono">{formatMMSS(Math.max(0, remaining))}</div>
           </div>
           <div className="mt-4 flex gap-3">
-            {!running ? <button onClick={() => setRunning(true)} className="px-4 py-2 bg-blue-600 text-white rounded">Start</button> : <button onClick={() => setRunning(false)} className="px-4 py-2 bg-yellow-400 text-white rounded">Pause</button>}
+            {!running ? <button onClick={() => setRunning(true)} className="btn-primary">Start</button> : <button onClick={() => setRunning(false)} className="px-4 py-2 bg-yellow-400 text-white rounded">Pause</button>}
             <button onClick={() => { setRunning(false); setRemaining(durationSeconds) }} className="px-4 py-2 bg-gray-200 rounded">Reset</button>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function PomodoroManager() {
           <h4 className="font-semibold">Attach Tasks</h4>
           {tasksLoading ? <div className="text-sm text-zinc-500">Loading tasks...</div> : (
             <div className="flex flex-col gap-2 mt-3">
-              {tasks.map(t => (
+        {tasks.map(t => (
                 <label key={t.id} className="flex items-center gap-2 p-2 rounded hover:bg-gray-50">
                   <input type="checkbox" checked={attachedTaskIds.includes(t.id)} onChange={() => toggleAttach(t.id)} />
                   <div className="flex-1">
