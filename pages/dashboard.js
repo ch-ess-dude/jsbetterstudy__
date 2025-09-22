@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
-import dynamic from 'next/dynamic'
-
-const PomodoroManager = dynamic(() => import('../components/PomodoroManager'), { ssr: false })
+import DashboardLayout from '../components/Layout/DashboardLayout'
+import useRequireAuth from '../hooks/useRequireAuth'
 
 export default function Dashboard() {
   const [stats, setStats] = useState({ study_time_seconds: 0, sessions_completed: 0, tasks_completed: 0, tasks_left: 0 })
   const [weeklyProgress, setWeeklyProgress] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [analyticsRows, setAnalyticsRows] = useState([])
+
+  const { loading: authLoading, user } = useRequireAuth()
+
+  // Wait for auth check before loading analytics
+  useEffect(() => {
+    if (authLoading) return
+  }, [authLoading])
 
   useEffect(() => {
     ;(async () => {
-      const { data } = await supabase.auth.getUser()
-      const user = data?.user || null
       if (!user) {
         setLoading(false)
         return
       }
 
       // aggregate totals from analytics table
-      const { data: rows } = await supabase.from('analytics').select('study_time_seconds, sessions_completed, tasks_completed, tasks_left').eq('user_id', user.id)
+      const { data: rows } = await supabase.from('analytics').select('date,study_time_seconds, sessions_completed, tasks_completed, tasks_left').eq('user_id', user.id).order('date', { ascending: true }).limit(365)
       const totals = (rows || []).reduce((acc, r) => {
         acc.study_time_seconds += r.study_time_seconds || 0
         acc.sessions_completed += r.sessions_completed || 0
@@ -29,6 +34,7 @@ export default function Dashboard() {
       }, { study_time_seconds: 0, sessions_completed: 0, tasks_completed: 0, tasks_left: 0 })
 
       setStats(totals)
+      setAnalyticsRows(rows || [])
 
       // weekly progress: compute study_time_seconds for this week vs goal (default 10 hours)
       const today = new Date()
@@ -41,33 +47,46 @@ export default function Dashboard() {
 
       setLoading(false)
     })()
-  }, [])
+  }, [user])
 
-  if (loading) return <div>Loading dashboard...</div>
+  if (loading || authLoading) return <div>Loading dashboard...</div>
 
   return (
-    <div>
-      <div className="mb-6">
-        <PomodoroManager />
-      </div>
-      <h2 className="text-2xl font-semibold">Dashboard</h2>
-      <p className="text-zinc-600 mt-2">Analytics overview, quick start, and AI placeholders.</p>
+    <DashboardLayout>
+      <div>
+        <h2 className="text-2xl font-semibold">Dashboard</h2>
+        <p className="text-zinc-600 mt-2">Analytics overview and AI placeholders.</p>
 
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="p-4 bg-white rounded shadow">Total study hours: {(stats.study_time_seconds/3600).toFixed(2)}</div>
-        <div className="p-4 bg-white rounded shadow">Sessions completed: {stats.sessions_completed}</div>
-        <div className="p-4 bg-white rounded shadow">Tasks completed: {stats.tasks_completed}</div>
-        <div className="p-4 bg-white rounded shadow">Tasks left: {stats.tasks_left}</div>
-        <div className="p-4 bg-white rounded shadow col-span-1 md:col-span-2">
-          <div className="flex items-center justify-between">
-            <div>Weekly progress</div>
-            <div>{weeklyProgress}%</div>
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 bg-white rounded shadow">Total study hours: {(stats.study_time_seconds/3600).toFixed(2)}</div>
+          <div className="p-4 bg-white rounded shadow">Sessions completed: {stats.sessions_completed}</div>
+          <div className="p-4 bg-white rounded shadow">Tasks completed: {stats.tasks_completed}</div>
+          <div className="p-4 bg-white rounded shadow">Tasks left: {stats.tasks_left}</div>
+          <div className="p-4 bg-white rounded shadow col-span-1 md:col-span-2">
+            <div className="flex items-center justify-between">
+              <div>Weekly progress</div>
+              <div>{weeklyProgress}%</div>
+            </div>
+            <div className="w-full bg-zinc-200 h-3 rounded mt-2">
+              <div className="bg-zinc-800 h-3 rounded" style={{ width: `${weeklyProgress}%` }} />
+            </div>
           </div>
-          <div className="w-full bg-zinc-200 h-3 rounded mt-2">
-            <div className="bg-zinc-800 h-3 rounded" style={{ width: `${weeklyProgress}%` }} />
+
+          {/* Inline analytics preview: small charts placeholders */}
+          <div className="p-4 bg-white rounded shadow col-span-1 md:col-span-2">
+            <h3 className="font-medium mb-2">Recent analytics</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {analyticsRows.slice(-7).map(r => (
+                <div key={r.date} className="p-2 border rounded">
+                  <div className="text-sm text-zinc-500">{r.date}</div>
+                  <div className="font-semibold">{(r.study_time_seconds/3600).toFixed(2)} hrs</div>
+                  <div className="text-xs text-zinc-500">Sessions: {r.sessions_completed}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DashboardLayout>
   )
 }

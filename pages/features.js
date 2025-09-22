@@ -1,11 +1,10 @@
 import React from 'react'
-import HeaderNav from '../components/landing/HeaderNav'
 import Link from 'next/link'
 
 export default function Features(){
   return (
     <div className="min-h-screen bg-gray-50">
-      <HeaderNav />
+      <div className="h-16" />
       <main className="max-w-4xl mx-auto px-6 md:px-20 py-16">
         <h1 className="text-3xl font-bold">Features</h1>
         <p className="text-zinc-600 mt-4">Just Better Study focuses on lightweight productivity features you actually use.</p>

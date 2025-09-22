@@ -1,11 +1,10 @@
 import React from 'react'
-import HeaderNav from '../components/landing/HeaderNav'
 import Link from 'next/link'
 
 export default function About(){
   return (
     <div className="min-h-screen bg-gray-50">
-      <HeaderNav />
+      <div className="h-16" />
       <main className="max-w-4xl mx-auto px-6 md:px-20 py-16">
         <h1 className="text-3xl font-bold">About Just Better Study</h1>
         <p className="text-zinc-600 mt-4">We're building a focused, free productivity toolkit for students: Pomodoro, Tasks, session tracking, and analytics — no distractions, no paywalls.</p>
