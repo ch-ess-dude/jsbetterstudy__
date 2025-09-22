@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
+import dynamic from 'next/dynamic'
+
+const PomodoroManager = dynamic(() => import('../components/PomodoroManager'), { ssr: false })
 
 export default function Dashboard() {
   const [stats, setStats] = useState({ study_time_seconds: 0, sessions_completed: 0, tasks_completed: 0, tasks_left: 0 })
@@ -44,6 +47,9 @@ export default function Dashboard() {
 
   return (
     <div>
+      <div className="mb-6">
+        <PomodoroManager />
+      </div>
       <h2 className="text-2xl font-semibold">Dashboard</h2>
       <p className="text-zinc-600 mt-2">Analytics overview, quick start, and AI placeholders.</p>
 

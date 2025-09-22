@@ -2,5 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/account": "pages/account.js"
+  "/dashboard": "pages/dashboard.js",
+  "/tasks": "pages/tasks.js",
+  "/analytics": "pages/analytics.js",
+  "/account": "pages/account.js",
+  "/timer": "pages/timer.js",
+  "/": "pages/index.js",
+  "/summaries": "pages/summaries.js",
+  "/courses": "pages/courses.js"
 }

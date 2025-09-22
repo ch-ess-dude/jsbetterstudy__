@@ -1,15 +1,15 @@
-import React from 'react'
-import Pomodoro from '../components/Pomodoro'
+import DashboardLayout from '../components/Layout/DashboardLayout'
+import useRequireAuth from '../hooks/useRequireAuth'
+import PomodoroManager from '../components/PomodoroManager'
 
-export default function Timer() {
+export default function TimerPage() {
+  const { loading } = useRequireAuth()
+  if (loading) return <div>Loading...</div>
+
   return (
-    <div>
-      <h2 className="text-2xl font-semibold">Pomodoro Timer</h2>
-      <p className="text-zinc-600 mt-2">Start a 25/5 session. Session logging saved locally (Supabase soon).</p>
-
-      <div className="mt-4">
-        <Pomodoro />
-      </div>
-    </div>
+    <DashboardLayout>
+      <h1 className="text-2xl font-semibold mb-4">Timer</h1>
+      <PomodoroManager />
+    </DashboardLayout>
   )
 }

@@ -14,5 +14,11 @@
   "node_modules/@supabase/storage-js/dist/module/lib/helpers.js -> @supabase/node-fetch": {
     "id": "node_modules/@supabase/storage-js/dist/module/lib/helpers.js -> @supabase/node-fetch",
     "files": []
+  },
+  "pages/dashboard.js -> ../components/PomodoroManager": {
+    "id": "pages/dashboard.js -> ../components/PomodoroManager",
+    "files": [
+      "static/chunks/_pages-dir-browser_components_PomodoroManager_js.js"
+    ]
   }
 }
