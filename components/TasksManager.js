@@ -77,29 +77,29 @@ export default function TasksManager() {
     }
   }
 
-  if (loading) return <div className="p-4 bg-white rounded shadow">Loading tasks...</div>
+  if (loading) return <div className="p-4 bg-zinc-800 rounded shadow">Loading tasks...</div>
 
-  if (!user) return <div className="p-4 bg-white rounded shadow">Please sign in to sync your tasks with the database.</div>
+  if (!user) return <div className="p-4 bg-zinc-800 rounded shadow">Please sign in to sync your tasks with the database.</div>
 
   return (
-    <div className="p-4 bg-white rounded shadow">
+    <div className="p-4 bg-zinc-800 rounded shadow text-zinc-200">
       <form onSubmit={addTask} className="flex gap-2">
         <input value={title} onChange={e => setTitle(e.target.value)} placeholder="New task" className="flex-1 border p-2 rounded" />
-        <button className="btn-primary">Add</button>
+        <button className="px-3 py-2 bg-zinc-700 text-zinc-100 rounded">Add</button>
       </form>
 
       <ul className="mt-4 space-y-2">
-        {tasks.length === 0 && <li className="text-zinc-500">No tasks yet.</li>}
+        {tasks.length === 0 && <li className="text-zinc-400">No tasks yet.</li>}
         {tasks.map(task => (
-            <li key={task.id} className="flex items-center justify-between border p-2 rounded">
+            <li key={task.id} className="flex items-center justify-between border border-zinc-700 p-2 rounded">
             <div>
               <label className="inline-flex items-center gap-2">
                 <input type="checkbox" checked={task.completed} onChange={() => toggle(task.id, task.completed)} />
-                <span className={task.completed ? 'line-through text-zinc-400' : ''}>{task.title}</span>
+                <span className={task.completed ? 'line-through text-zinc-500' : ''}>{task.title}</span>
               </label>
             </div>
             <div className="flex items-center gap-2">
-              <button onClick={() => remove(task.id)} className="text-sm text-red-600">Delete</button>
+              <button onClick={() => remove(task.id)} className="text-sm text-zinc-400">Delete</button>
             </div>
           </li>
         ))}

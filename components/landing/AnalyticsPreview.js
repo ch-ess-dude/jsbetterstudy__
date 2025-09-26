@@ -82,8 +82,8 @@ export default function AnalyticsPreview(){
       {
         label: 'Study minutes',
         data: studyData,
-        borderColor: '#111827',
-        backgroundColor: 'rgba(17,24,39,0.08)',
+        borderColor: '#D4D4D8',
+        backgroundColor: 'rgba(212,212,216,0.06)',
         tension: 0.25,
         fill: true,
       }
@@ -94,21 +94,21 @@ export default function AnalyticsPreview(){
   const totalTasksLeft = analytics.reduce((s, a) => s + (a.tasks_left || 0), 0)
   const pieData = {
     labels: ['Completed', 'Remaining'],
-    datasets: [{
+      datasets: [{
       data: [totalTasksCompleted, totalTasksLeft],
-      backgroundColor: ['#10B981', '#F97316'],
+      backgroundColor: ['#A3A3A3', '#6B6B6B'],
       hoverOffset: 6
     }]
   }
 
   return (
     <section className="flex flex-col md:flex-row gap-8 px-6 md:px-20 py-16">
-      <div className="w-full md:w-1/2 h-64 bg-white rounded-lg p-4 shadow">
+      <div className="w-full md:w-1/2 h-64 bg-zinc-800 rounded-lg p-4 shadow">
         <h4 className="text-sm font-semibold mb-2">Study (last 7 days)</h4>
         {loading ? (
-          <div className="flex items-center justify-center h-full text-gray-400">Loading...</div>
+          <div className="flex items-center justify-center h-full text-zinc-400">Loading...</div>
         ) : error ? (
-          <div className="text-red-600">Error loading analytics: {error}</div>
+          <div className="text-zinc-300">Error loading analytics: {error}</div>
         ) : (
           <Line data={lineDataset} options={{
             maintainAspectRatio: false,
@@ -118,16 +118,16 @@ export default function AnalyticsPreview(){
         )}
       </div>
 
-      <div className="w-full md:w-1/2 h-64 bg-white rounded-lg p-4 shadow">
+      <div className="w-full md:w-1/2 h-64 bg-zinc-800 rounded-lg p-4 shadow">
         <h4 className="text-sm font-semibold mb-2">Tasks (7 days total)</h4>
         {loading ? (
-          <div className="flex items-center justify-center h-full text-gray-400">Loading...</div>
+          <div className="flex items-center justify-center h-full text-zinc-400">Loading...</div>
         ) : error ? (
-          <div className="text-red-600">Error loading analytics: {error}</div>
+          <div className="text-zinc-300">Error loading analytics: {error}</div>
         ) : (
           <div className="flex items-center justify-center h-full">
             {(totalTasksCompleted + totalTasksLeft) === 0 ? (
-              <div className="text-gray-400">No task data yet</div>
+              <div className="text-zinc-400">No task data yet</div>
             ) : (
               <div className="w-40 h-40">
                 <Pie data={pieData} options={{ maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }} />

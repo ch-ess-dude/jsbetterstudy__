@@ -16,9 +16,7 @@ const navItems = [
   { key: 'tasks', label: 'Tasks', href: '/tasks', icon: (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7 7h10M7 17h10"></path></svg>
   )},
-  { key: 'analytics', label: 'Analytics', href: '/analytics', icon: (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 3v18M20 8v7M2 12v3"></path></svg>
-  )},
+  // analytics removed per user request
   { key: 'flashcards', label: 'Flashcards', href: '/flashcards', icon: (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h12a2 2 0 002-2V7M8 7v10M16 7v10"></path></svg>
   )},
@@ -51,13 +49,13 @@ export default function Sidebar({ onLogout } = {}) {
   }
 
   return (
-    <aside className={`bg-gray-50 border-r h-screen flex flex-col transition-all ${collapsed ? 'w-20' : 'w-64'}`}>
+    <aside className={`bg-zinc-900 border-r border-zinc-800 h-screen flex flex-col transition-all ${collapsed ? 'w-20' : 'w-64'}`}>
       <div className="p-4 flex items-center justify-between border-b">
         <div className="flex items-center gap-2">
-          <div className={`text-lg font-bold text-gray-900 ${collapsed ? 'hidden' : ''}`}>JsBetter</div>
-          <div className={`text-lg font-bold text-gray-900 ${collapsed ? '' : 'hidden'}`}>JB</div>
+          <div className={`text-lg font-bold text-zinc-200 ${collapsed ? 'hidden' : ''}`}>JsBetter</div>
+          <div className={`text-lg font-bold text-zinc-200 ${collapsed ? '' : 'hidden'}`}>JB</div>
         </div>
-        <button aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} onClick={() => setCollapsed(s => !s)} className="p-1 rounded hover:bg-gray-100">
+        <button aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} onClick={() => setCollapsed(s => !s)} className="p-1 rounded hover:bg-zinc-800">
           {collapsed ? (
             <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M6.293 9.293a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd"/></svg>
           ) : (
@@ -70,8 +68,8 @@ export default function Sidebar({ onLogout } = {}) {
         <ul className="p-2 space-y-1">
           {navItems.map(item => (
             <li key={item.key}>
-              <Link href={item.href} className={`flex items-center gap-3 p-2 rounded hover:bg-indigo-50 ${router.pathname === item.href ? 'bg-indigo-100 font-medium' : ''}`} title={item.label}>
-                <div className="text-indigo-600">{item.icon}</div>
+              <Link href={item.href} className={`flex items-center gap-3 p-2 rounded hover:bg-zinc-800 ${router.pathname === item.href ? 'bg-zinc-700 font-medium' : ''}`} title={item.label}>
+                <div className={`${router.pathname === item.href ? 'text-zinc-100' : 'text-zinc-400'}`}>{item.icon}</div>
                 <span className={`${collapsed ? 'hidden' : 'block'}`}>{item.label}</span>
               </Link>
             </li>
@@ -80,10 +78,16 @@ export default function Sidebar({ onLogout } = {}) {
       </nav>
 
       <div className="p-3 border-t">
-        <button onClick={handleLogout} className="w-full flex items-center gap-3 p-2 rounded hover:bg-red-50 text-red-600">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h5a2 2 0 012 2v1"></path></svg>
-          <span className={`${collapsed ? 'hidden' : 'block'}`}>Logout</span>
-        </button>
+        <div className="flex items-center justify-between gap-2">
+            <div className="flex-1">
+            <button onClick={handleLogout} className="w-full flex items-center gap-3 p-2 rounded hover:bg-zinc-800 text-zinc-200">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h5a2 2 0 012 2v1"></path></svg>
+              <span className={`${collapsed ? 'hidden' : 'block'}`}>Logout</span>
+            </button>
+          </div>
+
+          {/* Theme removed — permanent dark mode */}
+        </div>
       </div>
     </aside>
   )

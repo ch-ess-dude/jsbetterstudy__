@@ -1,22 +1,8 @@
 {
-  "/about": "pages/about.html",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/auth": "pages/auth.html",
-  "/account": "pages/account.html",
-  "/analytics": "pages/analytics.html",
-  "/chat": "pages/chat.html",
-  "/dashboard": "pages/dashboard.html",
-  "/components/HeaderNav": "pages/components/HeaderNav.html",
-  "/features": "pages/features.html",
-  "/flashcards": "pages/flashcards.html",
-  "/": "pages/index.html",
-  "/contact": "pages/contact.html",
-  "/dashboard/analytics": "pages/dashboard/analytics.html",
-  "/courses": "pages/courses.html",
-  "/summaries": "pages/summaries.html",
-  "/timer": "pages/timer.html",
-  "/tasks": "pages/tasks.html",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/dashboard": "pages/dashboard.js",
+  "/": "pages/index.js",
+  "/auth": "pages/auth.js"
 }

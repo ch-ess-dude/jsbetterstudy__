@@ -77,31 +77,31 @@ export default function Pomodoro({ workMinutes = 25, breakMinutes = 5 }) {
   }
 
   return (
-    <div className="p-4 bg-white rounded shadow max-w-md">
+    <div className="p-4 bg-zinc-800 text-zinc-100 rounded shadow max-w-md">
       <div className="text-center">
-        <div className="text-sm text-zinc-500">{mode === 'work' ? 'Focus' : 'Break'}</div>
+        <div className="text-sm text-zinc-400">{mode === 'work' ? 'Focus' : 'Break'}</div>
         <div className="text-5xl font-mono mt-2">{formatTime(Math.max(0, secondsLeft))}</div>
 
         <div className="mt-4 flex items-center justify-center gap-2">
-          {!running ? <button onClick={start} className="px-4 py-2 bg-zinc-800 text-white rounded">Start</button> : <button onClick={pause} className="px-4 py-2 bg-zinc-200 rounded">Pause</button>}
-          <button onClick={reset} className="px-4 py-2 border rounded">Reset</button>
+          {!running ? <button onClick={start} className="px-4 py-2 bg-zinc-700 text-zinc-100 rounded">Start</button> : <button onClick={pause} className="px-4 py-2 bg-zinc-600 text-zinc-100 rounded">Pause</button>}
+          <button onClick={reset} className="px-4 py-2 border border-zinc-700 rounded">Reset</button>
         </div>
       </div>
 
       <div className="mt-6">
-        <h4 className="font-semibold">Recent Sessions</h4>
-        {loading ? <div className="text-zinc-500">Loading sessions...</div> : <RecentSessions sessions={sessions} />}
+        <h4 className="font-semibold text-zinc-100">Recent Sessions</h4>
+        {loading ? <div className="text-zinc-400">Loading sessions...</div> : <RecentSessions sessions={sessions} />}
       </div>
     </div>
   )
 }
 
 function RecentSessions({ sessions }) {
-  if (!sessions || sessions.length === 0) return <div className="text-zinc-500">No sessions yet.</div>
+  if (!sessions || sessions.length === 0) return <div className="text-zinc-400">No sessions yet.</div>
   return (
     <ul className="mt-2 space-y-2">
       {sessions.slice(0,5).map(s => (
-        <li key={s.id} className="text-sm border p-2 rounded">
+        <li key={s.id} className="text-sm border border-zinc-700 p-2 rounded text-zinc-100 bg-zinc-900/40">
           <div>Start: {new Date(s.start_ts).toLocaleString()}</div>
           <div>Duration: {Math.round(s.duration_seconds/60)} min</div>
         </li>

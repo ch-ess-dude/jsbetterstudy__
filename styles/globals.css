@@ -7,7 +7,9 @@ html, body, #__next {
 }
 
 body {
-  @apply bg-zinc-50 text-zinc-900 antialiased;
+  background-color: #121212; /* deep dark */
+  color: #ECEBE7; /* default body shell white */
+  -webkit-font-smoothing: antialiased;
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
@@ -16,17 +18,59 @@ body {
   @apply bg-white rounded shadow p-4;
 }
 
-/* Buttons */
+/* Card / panel */
+.card {
+  background-color: #2A2A2A; /* card/panel */
+  color: #ECEBE7;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  border-radius: 0.5rem;
+}
+
 .btn {
   @apply inline-flex items-center justify-center px-4 py-2 rounded;
 }
 .btn-primary {
-  /* Primary: Indigo 600, hover Indigo 700 */
-  @apply bg-indigo-600 text-white shadow-md rounded-full px-6 py-3;
+  /* use neutral pill CTA */
+  @apply bg-zinc-700 text-white shadow-md rounded-full px-6 py-3;
 }
 .btn-ghost {
-  @apply border bg-white;
+  @apply border bg-transparent text-zinc-200;
 }
+
+/* Buttons - grayscale/off-whites */
+.btn-primary { background-color: #ECEBE7; color: #121212; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+.btn-ghost { border-color: #333333; background-color: transparent; color: #ECEBE7 }
+
+/* Sidebar */
+aside { background-color: #0F0F0F; border-right: 1px solid rgba(255,255,255,0.04) }
+
+/* Button hover states (grayscale) */
+.btn-primary:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.btn-ghost:hover { background-color: rgba(255,255,255,0.02); }
+
+/* Global overrides */
+nav { background-color: transparent; border-bottom: 1px solid rgba(255,255,255,0.03) }
+main { background-color: #181818 }
+header { background-color: transparent }
+a { color: #ECEBE7 }
+a:hover { color: #F8F8F8 }
+input, textarea, select {
+  background-color: #1E1E1E; color: #ECEBE7; border: 1px solid rgba(255,255,255,0.04); caret-color: #ECEBE7;
+}
+.muted { color: #EAEAEA }
+
+/* Focus visible for accessibility */
+:focus {
+  outline: 2px solid rgba(230,230,230,0.12);
+  outline-offset: 2px;
+}
+
+
+/* Buttons final tweaks */
+.btn-primary { transition: all 160ms ease; }
+
+/* Logout styling kept grayscale but emphasized */
+.logout-red { color: #ECEBE7 }
 
 /* Small utilities */
 .muted { @apply text-zinc-500 }

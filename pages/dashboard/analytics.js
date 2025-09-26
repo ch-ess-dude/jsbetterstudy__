@@ -54,17 +54,17 @@ export default function AnalyticsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="card p-4">
             <h3 className="font-medium mb-2">Study Time (seconds)</h3>
-            <Line data={{ labels: dates, datasets: [{ label: 'Study time', data: studySeconds, borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.2)' }] }} options={lineOptions} />
+            <Line data={{ labels: dates, datasets: [{ label: 'Study time', data: studySeconds, borderColor: '#D4D4D8', backgroundColor: 'rgba(212,212,216,0.12)' }] }} options={lineOptions} />
           </div>
 
           <div className="card p-4">
             <h3 className="font-medium mb-2">Sessions Completed</h3>
-            <Bar data={{ labels: dates, datasets: [{ label: 'Sessions', data: sessions, backgroundColor: '#10b981' }] }} options={{ responsive: true }} />
+            <Bar data={{ labels: dates, datasets: [{ label: 'Sessions', data: sessions, backgroundColor: '#9CA3AF' }] }} options={{ responsive: true }} />
           </div>
 
           <div className="card p-4 md:col-span-2">
             <h3 className="font-medium mb-2">Tasks Completed vs Left (last period)</h3>
-            <Pie data={{ labels: ['Completed', 'Left'], datasets: [{ data: [tasksCompleted.reduce((a,b)=>a+b,0), data.reduce((a,b)=>a.tasks_left + a, 0) || 0], backgroundColor: ['#60a5fa', '#f97316'] }] }} />
+            <Pie data={{ labels: ['Completed', 'Left'], datasets: [{ data: [tasksCompleted.reduce((a,b)=>a+b,0), data.reduce((a,b)=>a.tasks_left + a, 0) || 0], backgroundColor: ['#A3A3A3', '#6B6B6B'] }] }} />
           </div>
         </div>
       )}

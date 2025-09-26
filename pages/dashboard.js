@@ -54,33 +54,33 @@ export default function Dashboard() {
   return (
     <DashboardLayout>
       <div>
-        <h2 className="text-2xl font-semibold">Dashboard</h2>
-        <p className="text-zinc-600 mt-2">Analytics overview and AI placeholders.</p>
+        <h2 className="text-2xl font-semibold text-zinc-100">Dashboard</h2>
+        <p className="text-zinc-400 mt-2">Analytics overview and AI placeholders.</p>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-4 bg-white rounded shadow">Total study hours: {(stats.study_time_seconds/3600).toFixed(2)}</div>
-          <div className="p-4 bg-white rounded shadow">Sessions completed: {stats.sessions_completed}</div>
-          <div className="p-4 bg-white rounded shadow">Tasks completed: {stats.tasks_completed}</div>
-          <div className="p-4 bg-white rounded shadow">Tasks left: {stats.tasks_left}</div>
-          <div className="p-4 bg-white rounded shadow col-span-1 md:col-span-2">
+          <div className="p-4 bg-zinc-800 text-zinc-100 rounded shadow">Total study hours: {(stats.study_time_seconds/3600).toFixed(2)}</div>
+          <div className="p-4 bg-zinc-800 text-zinc-100 rounded shadow">Sessions completed: {stats.sessions_completed}</div>
+          <div className="p-4 bg-zinc-800 text-zinc-100 rounded shadow">Tasks completed: {stats.tasks_completed}</div>
+          <div className="p-4 bg-zinc-800 text-zinc-100 rounded shadow">Tasks left: {stats.tasks_left}</div>
+          <div className="p-4 bg-zinc-800 text-zinc-100 rounded shadow col-span-1 md:col-span-2">
             <div className="flex items-center justify-between">
               <div>Weekly progress</div>
               <div>{weeklyProgress}%</div>
             </div>
-            <div className="w-full bg-zinc-200 h-3 rounded mt-2">
-              <div className="bg-zinc-800 h-3 rounded" style={{ width: `${weeklyProgress}%` }} />
+            <div className="w-full bg-zinc-700 h-3 rounded mt-2">
+              <div className="bg-zinc-400 h-3 rounded" style={{ width: `${weeklyProgress}%` }} />
             </div>
           </div>
 
           {/* Inline analytics preview: small charts placeholders */}
-          <div className="p-4 bg-white rounded shadow col-span-1 md:col-span-2">
+          <div className="p-4 bg-zinc-800 text-zinc-100 rounded shadow col-span-1 md:col-span-2">
             <h3 className="font-medium mb-2">Recent analytics</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {analyticsRows.slice(-7).map(r => (
-                <div key={r.date} className="p-2 border rounded">
-                  <div className="text-sm text-zinc-500">{r.date}</div>
+                <div key={r.date} className="p-2 border border-zinc-700 rounded">
+                  <div className="text-sm text-zinc-400">{r.date}</div>
                   <div className="font-semibold">{(r.study_time_seconds/3600).toFixed(2)} hrs</div>
-                  <div className="text-xs text-zinc-500">Sessions: {r.sessions_completed}</div>
+                  <div className="text-xs text-zinc-400">Sessions: {r.sessions_completed}</div>
                 </div>
               ))}
             </div>

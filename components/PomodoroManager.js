@@ -122,14 +122,14 @@ export default function PomodoroManager() {
   }
 
   return (
-  <div className="max-w-3xl mx-auto bg-gradient-to-b from-white to-gray-50 p-6 rounded-2xl shadow-lg">
+  <div className="max-w-3xl mx-auto bg-zinc-900 p-6 rounded-2xl shadow-lg">
       <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <div className="flex-1">
           <input value={sessionName} onChange={e => setSessionName(e.target.value)} className="w-full p-3 rounded-lg border" />
         </div>
-        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
           {Object.keys(MODES).map(key => (
-            <button key={key} onClick={() => setMode(key)} className={`px-3 py-2 rounded ${mode===key? 'bg-blue-600 text-white':'bg-white text-gray-700'} shadow-sm`}>
+            <button key={key} onClick={() => setMode(key)} className={`px-3 py-2 rounded ${mode===key? 'bg-zinc-700 text-zinc-100':'bg-zinc-800 text-zinc-400'} shadow-sm`}>
               {MODES[key].label}
             </button>
           ))}
@@ -138,25 +138,25 @@ export default function PomodoroManager() {
 
       <div className="flex flex-col md:flex-row items-center gap-6">
         <div className="flex-1 flex flex-col items-center">
-          <div className="w-56 h-56 rounded-full bg-gradient-to-tr from-white to-indigo-50 flex items-center justify-center shadow-inner">
-            <div className="text-5xl font-mono">{formatMMSS(Math.max(0, remaining))}</div>
+          <div className="w-56 h-56 rounded-full bg-zinc-800 flex items-center justify-center shadow-inner">
+            <div className="text-5xl font-mono text-zinc-100">{formatMMSS(Math.max(0, remaining))}</div>
           </div>
           <div className="mt-4 flex gap-3">
-            {!running ? <button onClick={() => setRunning(true)} className="btn-primary">Start</button> : <button onClick={() => setRunning(false)} className="px-4 py-2 bg-yellow-400 text-white rounded">Pause</button>}
-            <button onClick={() => { setRunning(false); setRemaining(durationSeconds) }} className="px-4 py-2 bg-gray-200 rounded">Reset</button>
+            {!running ? <button onClick={() => setRunning(true)} className="px-4 py-2 bg-zinc-700 text-zinc-100 rounded">Start</button> : <button onClick={() => setRunning(false)} className="px-4 py-2 bg-zinc-600 text-zinc-100 rounded">Pause</button>}
+            <button onClick={() => { setRunning(false); setRemaining(durationSeconds) }} className="px-4 py-2 bg-zinc-700 text-zinc-200 rounded">Reset</button>
           </div>
         </div>
 
-        <aside className="w-full md:w-80 bg-white p-4 rounded-lg shadow">
+        <aside className="w-full md:w-80 bg-zinc-800 p-4 rounded-lg shadow">
           <h4 className="font-semibold">Attach Tasks</h4>
           {tasksLoading ? <div className="text-sm text-zinc-500">Loading tasks...</div> : (
             <div className="flex flex-col gap-2 mt-3">
         {tasks.map(t => (
-                <label key={t.id} className="flex items-center gap-2 p-2 rounded hover:bg-gray-50">
+                <label key={t.id} className="flex items-center gap-2 p-2 rounded hover:bg-zinc-700">
                   <input type="checkbox" checked={attachedTaskIds.includes(t.id)} onChange={() => toggleAttach(t.id)} />
                   <div className="flex-1">
-                    <div className={`font-medium ${t.completed? 'line-through text-gray-400':''}`}>{t.title || t.name || t.description || 'Task'}</div>
-                    <div className="text-xs text-zinc-500">{t.notes || ''}</div>
+                    <div className={`font-medium ${t.completed? 'line-through text-zinc-500':''}`}>{t.title || t.name || t.description || 'Task'}</div>
+                    <div className="text-xs text-zinc-400">{t.notes || ''}</div>
                   </div>
                   <input type="checkbox" checked={completedTaskIds.includes(t.id)} onChange={() => toggleComplete(t.id)} title="Mark completed after session" />
                 </label>
@@ -176,8 +176,8 @@ export default function PomodoroManager() {
             setCompletedTaskIds([])
             setMode('pomodoro')
             setRemaining(MODES['pomodoro'].minutes * 60)
-          }} className="px-3 py-2 bg-white rounded shadow">Add New Session</button>
-          <button onClick={() => handleComplete()} className="px-3 py-2 bg-green-600 text-white rounded">Save Session</button>
+          }} className="px-3 py-2 bg-zinc-700 text-zinc-100 rounded shadow">Add New Session</button>
+          <button onClick={() => handleComplete()} className="px-3 py-2 bg-zinc-600 text-zinc-100 rounded">Save Session</button>
         </div>
         <div className="text-sm text-zinc-500">Mode: {MODES[mode].label} • {MODES[mode].minutes} min</div>
       </footer>
