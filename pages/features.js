@@ -27,7 +27,7 @@ export default function Features(){
 
           <div className="p-6 bg-zinc-800 text-zinc-100 rounded shadow">
             <h3 className="font-semibold">Privacy-first</h3>
-            <p className="text-sm text-zinc-400 mt-2">Your study data stays private  we only store what helps you improve.</p>
+            <p className="text-sm text-zinc-400 mt-2">Your study data stays private — we only store what helps you improve.</p>
           </div>
         </div>
 

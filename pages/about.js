@@ -7,7 +7,10 @@ export default function About(){
       <div className="h-16" />
       <main className="max-w-4xl mx-auto px-6 md:px-20 py-16">
         <h1 className="text-3xl font-bold text-zinc-100">About Just Better Study</h1>
-        <p className="text-zinc-400 mt-4">We're building a focused, free productivity toolkit for students: Pomodoro, Tasks, session tracking, and analytics  no distractions, no paywalls.</p>
+        <p className="text-zinc-400 mt-4">
+          We're building a focused, free productivity toolkit for students:
+          Pomodoro, Tasks, session tracking, and analytics — no distractions, no paywalls.
+        </p>
 
         <section className="mt-8 bg-zinc-800 p-6 rounded shadow">
           <h3 className="font-semibold text-zinc-100">Our mission</h3>

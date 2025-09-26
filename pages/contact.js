@@ -19,7 +19,7 @@ export default function Contact(){
         </section>
 
         <div className="mt-8">
-          <Link href="/" className="text-zinc-400">\u2190 Back to home</Link>
+          <Link href="/" className="text-zinc-400">{"\u2190"} Back to home</Link>
         </div>
       </main>
     </div>

@@ -64,7 +64,20 @@ export default function AnalyticsPage() {
 
           <div className="card p-4 md:col-span-2">
             <h3 className="font-medium mb-2">Tasks Completed vs Left (last period)</h3>
-            <Pie data={{ labels: ['Completed', 'Left'], datasets: [{ data: [tasksCompleted.reduce((a,b)=>a+b,0), data.reduce((a,b)=>a.tasks_left + a, 0) || 0], backgroundColor: ['#A3A3A3', '#6B6B6B'] }] }} />
+            <Pie
+              data={{
+                labels: ['Completed', 'Left'],
+                datasets: [
+                  {
+                    data: [
+                      tasksCompleted.reduce((a, b) => a + b, 0),
+                      data.reduce((acc, row) => acc + row.tasks_left, 0)
+                    ],
+                    backgroundColor: ['#A3A3A3', '#6B6B6B']
+                  }
+                ]
+              }}
+            />
           </div>
         </div>
       )}

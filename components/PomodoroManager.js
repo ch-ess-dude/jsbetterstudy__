@@ -122,7 +122,7 @@ export default function PomodoroManager() {
   }
 
   return (
-  <div className="max-w-3xl mx-auto bg-zinc-900 p-6 rounded-2xl shadow-lg">
+  <div className="max-w-3xl mx-auto bg-zinc-900 text-zinc-100 p-6 rounded-2xl shadow-lg">
       <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <div className="flex-1">
           <input value={sessionName} onChange={e => setSessionName(e.target.value)} className="w-full p-3 rounded-lg border" />

@@ -77,10 +77,9 @@ export default function TasksManager() {
     }
   }
 
-  if (loading) return <div className="p-4 bg-zinc-800 rounded shadow">Loading tasks...</div>
+  if (loading) return <div className="p-4 bg-zinc-800 text-zinc-100 rounded shadow">Loading tasks...</div>
 
-  if (!user) return <div className="p-4 bg-zinc-800 rounded shadow">Please sign in to sync your tasks with the database.</div>
-
+  if (!user) return <div className="p-4 bg-zinc-800 text-zinc-100 rounded shadow">Please sign in to sync your tasks with the database.</div>
   return (
     <div className="p-4 bg-zinc-800 rounded shadow text-zinc-200">
       <form onSubmit={addTask} className="flex gap-2">
@@ -95,7 +94,9 @@ export default function TasksManager() {
             <div>
               <label className="inline-flex items-center gap-2">
                 <input type="checkbox" checked={task.completed} onChange={() => toggle(task.id, task.completed)} />
-                <span className={task.completed ? 'line-through text-zinc-500' : ''}>{task.title}</span>
+                <span className={task.completed ? 'line-through text-zinc-300' : ''}>
+                  {task.title}
+                </span>
               </label>
             </div>
             <div className="flex items-center gap-2">

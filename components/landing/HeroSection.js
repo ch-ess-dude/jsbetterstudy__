@@ -14,7 +14,7 @@ export default function HeroSection(){
 
       <div className="w-full md:w-1/2 relative">
         <div className="w-full h-96 md:h-[28rem] bg-zinc-800 rounded-xl shadow-inner flex items-center justify-center">
-          <div className="text-zinc-500">Dashboard screenshot placeholder</div>
+          <div className="text-zinc-200">Dashboard screenshot placeholder</div>
         </div>
         <div className="absolute top-6 right-6 px-3 py-1 bg-zinc-700 text-zinc-200 rounded-full text-xs font-medium">AI Features Coming Soon</div>
       </div>

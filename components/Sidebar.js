@@ -68,9 +68,27 @@ export default function Sidebar({ onLogout } = {}) {
         <ul className="p-2 space-y-1">
           {navItems.map(item => (
             <li key={item.key}>
-              <Link href={item.href} className={`flex items-center gap-3 p-2 rounded hover:bg-zinc-800 ${router.pathname === item.href ? 'bg-zinc-700 font-medium' : ''}`} title={item.label}>
-                <div className={`${router.pathname === item.href ? 'text-zinc-100' : 'text-zinc-400'}`}>{item.icon}</div>
-                <span className={`${collapsed ? 'hidden' : 'block'}`}>{item.label}</span>
+              <Link
+                href={item.href}
+                className={`flex items-center gap-3 p-2 rounded hover:bg-zinc-800 ${
+                  router.pathname === item.href ? 'bg-zinc-700 font-medium' : ''
+                }`}
+                title={item.label}
+              >
+                <div
+                  className={`${
+                    router.pathname === item.href ? 'text-zinc-100' : 'text-zinc-400'
+                  }`}
+                >
+                  {item.icon}
+                </div>
+                <span
+                  className={`${collapsed ? 'hidden' : 'block'} ${
+                    router.pathname === item.href ? 'text-zinc-100' : 'text-zinc-400'
+                  }`}
+                >
+                  {item.label}
+                </span>
               </Link>
             </li>
           ))}
